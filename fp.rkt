@@ -1,7 +1,21 @@
+;; Given a list, the function returns a list with elements in reverse order.
+;; Even the sublists inside the list are reversed within.
 (DEFINE (reverse-general L)
+  ;; Helper function that takes two lists as parameters.
+  ;; Returns a list where the two lists are concatenated with each other.
+  (DEFINE (append L1 L2)
+    (COND
+      ((NULL? L1) L2)
+      (ELSE (CONS (CAR L1)
+                  (append (CDR L1) L2)))
+     )
+  )
   (COND
-    ((NULL? L) L) ;; Empty List
-    (ELSE (LIST (reverse-general (CDR L)) (CAR L)))
+    ((NULL? L) '()) ;; Empty List
+    (ELSE (append (reverse-general(CDR L)) (LIST(CAR L))))
   )
  )
+
+;; CONS, LIST, CAR, CDR
+;; Try Scheme Unit for Testing
  
