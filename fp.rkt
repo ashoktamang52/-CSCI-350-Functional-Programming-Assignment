@@ -12,6 +12,7 @@
   )
   (COND
     ((NULL? L) '()) ;; Empty List
+    ((LIST? (CAR L)) (append (CDR L) (LIST (reverse-general(CAR L))))) 
     (ELSE (append (reverse-general(CDR L)) (LIST(CAR L))))
   )
  )
