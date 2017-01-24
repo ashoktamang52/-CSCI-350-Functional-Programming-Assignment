@@ -18,10 +18,20 @@
  )
 
 ;; Given a list, the function returns the sume of numbers not in nested lists in the list.
-(DEFINE (sum-up-numbers L)
+(DEFINE (sum-up-numbers-simple L)
   (COND
     ((NULL? L) 0)
-    ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers (CDR L))))
-    (ELSE (sum-up-numbers (CDR L)))
+    ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers-simple (CDR L))))
+    (ELSE (sum-up-numbers-simple (CDR L)))
+  )
+)
+
+;; Given a list, the function returns the sum of all the numbers (including those in nested lists) in the liost.
+(DEFINE (sum-up-numbers-general L)
+  (COND
+    ((NULL? L) 0)
+    ((LIST? (CAR L)) (+ (sum-up-numbers-general (CAR L)) (sum-up-numbers-general (CDR L))))
+    ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers-general (CDR L))))
+    (ELSE (sum-up-numbers-general (CDR L)))
   )
 )
