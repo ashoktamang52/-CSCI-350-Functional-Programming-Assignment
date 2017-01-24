@@ -35,3 +35,12 @@
     (ELSE (sum-up-numbers-general (CDR L)))
   )
 )
+
+;; Given two different lists, the function returns the minimum of numbers in L1 that are
+;; larger than the smallest number in L2.
+(DEFINE (min-above-min L1 L2)
+  (COND
+    ((NULL? L1) #F)
+    (ELSE (MIN L1))
+  )
+)
