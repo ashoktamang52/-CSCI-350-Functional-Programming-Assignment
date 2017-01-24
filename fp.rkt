@@ -17,6 +17,11 @@
   )
  )
 
-;; CONS, LIST, CAR, CDR
-;; Try Scheme Unit for Testing
- 
+;; Given a list, the function returns the sume of numbers not in nested lists in the list.
+(DEFINE (sum-up-numbers L)
+  (COND
+    ((NULL? L) 0)
+    ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers (CDR L))))
+    (ELSE (sum-up-numbers (CDR L)))
+  )
+)
