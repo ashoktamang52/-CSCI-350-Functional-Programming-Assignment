@@ -12,7 +12,7 @@
   )
   (COND
     ((NULL? L) '()) ;; Empty List
-    ((LIST? (CAR L)) (append (CDR L) (LIST (reverse-general(CAR L))))) 
+    ((LIST? (CAR L)) (append (reverse-general (CDR L)) (LIST (reverse-general(CAR L))))) 
     (ELSE (append (reverse-general(CDR L)) (LIST(CAR L))))
   )
  )
@@ -37,11 +37,9 @@
 )
 
 ;; Helper Funciton: Given a list of numeric atoms, the function returns a minimum of the numbers in that list.
-(DEFINE (min-lists L)
-  (COND
-    ((NULL? L) 0)
-    (ELSE (EVAL '(CONS 'MIN+ L))))
-)
+;;(DEFINE (min-lists L)
+
+;;)
 
 ;; Given two different lists, the function returns the minimum of numbers in L1 that are
 ;; larger than the smallest number in L2.
