@@ -37,9 +37,12 @@
 )
 
 ;; Helper Funciton: Given a list of numeric atoms, the function returns a minimum of the numbers in that list.
-;;(DEFINE (min-lists L)
-
-;;)
+(DEFINE (min-from-list L)
+        (COND
+         ((NULL? L) #f)
+         (ELSE (MIN (CAR L) (min-from-list (CDR L))))
+        )         
+)
 
 ;; Given two different lists, the function returns the minimum of numbers in L1 that are
 ;; larger than the smallest number in L2.
