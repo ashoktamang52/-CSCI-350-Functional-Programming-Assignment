@@ -57,7 +57,7 @@
          ((NULL? L) '())
          (ELSE
           (IF (> (CAR L) N)
-              (LIST (CAR L) (greater-than-list (CDR L) N))
+              (CONS (CAR L) (greater-than-list (CDR L) N))
               (greater-than-list (CDR L) N)
           )
          )
