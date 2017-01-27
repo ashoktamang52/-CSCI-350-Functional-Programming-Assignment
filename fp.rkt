@@ -40,13 +40,14 @@
 (DEFINE (min-from-list L)
         (COND
          ((NULL? (CDR L)) (CAR L))
+         ; [TODO] Case for alpha-atoms as last element in the list.
          (ELSE
           (IF (NUMBER? (CAR L))
            (MIN (CAR L) (min-from-list (CDR L)))
            (min-from-list(CDR L))
           )
          )
-        )         
+        )
 )
 
 ;; Given two different lists, the function returns the minimum of numbers in L1 that are
@@ -54,6 +55,12 @@
 (DEFINE (min-above-min L1 L2)
   (COND
     ((NULL? L1) #F)
-    (ELSE (MIN L1))
+    ((NULL? L2)
+     (IF (NUMBER? (min-from-list L1))
+         (min-from-list L1)
+         #f
+     )
+    (ELSE
+     
   ) 
 )
