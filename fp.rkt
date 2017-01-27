@@ -40,7 +40,6 @@
 (DEFINE (min-from-list L)
         (COND
          ((NULL? (CDR L)) (CAR L))
-         ; [TODO] Case for alpha-atoms as last element in the list.
          (ELSE
           (IF (NUMBER? (CAR L))
            (MIN (CAR L) (min-from-list (CDR L)))
@@ -85,22 +84,19 @@
   (COND
     ((NULL? L1) #F)
     ((NULL? L2)
-     (IF (NUMBER? (min-from-list L1))
-         (min-from-list L1)
+     (IF (NULL? (only-numeric L1)) ; If list doesn't have any numeric atoms.
          #F
+         (min-from-list (only-numeric L1))
      )
     )
     (ELSE
-     (IF (NUMBER? (min-from-list L2))
-        (IF (NULL? (greater-than-list L1 (min-from-list L2)))
-            #F
-            (min-from-list (greater-than-list L1 (min-from-list L2)))
-        )
-        (IF (NUMBER? (min-from-list L1))
-            (min-from-list L1)
-            #F
-        )
+     (IF (NULL? (only-numeric L1)) ; If L1 doesn't have any numeric atoms.
+          #F
+          (IF (NULL? (only-numeric L2))
+              (min-from-list (only-numeric L1))
+              (min-from-list (greater-than-list (only-numeric L1) (min-from-list (only-numeric L2))))
+          ) 
+      )
      )
-    )
   ) 
 )
