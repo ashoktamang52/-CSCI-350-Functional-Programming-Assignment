@@ -94,7 +94,12 @@
           #F
           (IF (NULL? (only-numeric L2))
               (min-from-list (only-numeric L1))
-              (min-from-list (greater-than-list (only-numeric L1) (min-from-list (only-numeric L2))))
+              (IF (NULL? (greater-than-list (only-numeric L1) (min-from-list (only-numeric L2))))
+                  #F
+                  (min-from-list (greater-than-list
+                                  (only-numeric L1)
+                                  (min-from-list (only-numeric L2))))
+               )
           ) 
       )
      )
