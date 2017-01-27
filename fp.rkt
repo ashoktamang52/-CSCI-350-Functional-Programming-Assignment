@@ -40,7 +40,12 @@
 (DEFINE (min-from-list L)
         (COND
          ((NULL? (CDR L)) (CAR L))
-         (ELSE (MIN (CAR L) (min-from-list (CDR L))))
+         (ELSE
+          (IF (NUMBER? (CAR L))
+           (MIN (CAR L) (min-from-list (CDR L)))
+           (min-from-list(CDR L))
+          )
+         )
         )         
 )
 
@@ -50,5 +55,5 @@
   (COND
     ((NULL? L1) #F)
     (ELSE (MIN L1))
-  )
+  ) 
 )
