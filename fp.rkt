@@ -78,8 +78,14 @@
     )
     (ELSE
      (IF (NUMBER? (min-from-list L2))
-         L1
-         L1
+        (IF (NULL? (greater-than-list L1 (min-from-list L2)))
+            #F
+            (min-from-list (greater-than-list L1 (min-from-list L2)))
+        )
+        (IF (NUMBER? (min-from-list L1))
+            (min-from-list L1)
+            #F
+        )
      )
     )
   ) 
