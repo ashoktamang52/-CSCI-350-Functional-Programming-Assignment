@@ -39,7 +39,7 @@
 ;; Helper Funciton: Given a list of numeric atoms, the function returns a minimum of the numbers in that list.
 (DEFINE (min-from-list L)
         (COND
-         ((NULL? L) #f)
+         ((NULL? (CDR L)) (CAR L))
          (ELSE (MIN (CAR L) (min-from-list (CDR L))))
         )         
 )
