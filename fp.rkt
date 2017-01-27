@@ -1,13 +1,3 @@
-;; [Helper function]
-;; Parameter(s): <list> <list>
-;; Returns: List where the two lists are concatenated with each other.
-(DEFINE (append L1 L2)
-  (COND
-    ((NULL? L1) L2)
-    (ELSE (CONS (CAR L1) (append (CDR L1) L2)))
-  )
-)
-
 ;; [Part 1]
 ;; Parameter(s): <list>
 ;; Returns: List with elements in reverse order.
