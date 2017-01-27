@@ -50,6 +50,20 @@
         )
 )
 
+;; Helper Function: Given a list of alpha-numeric atoms, the function returns a new list of
+;; only numeric atoms.
+(DEFINE (only-numeric L)
+        (COND
+         ((NULL? L) '())
+         (ELSE
+          (IF (NUMBER? (CAR L))
+              (CONS (CAR L) (only-numeric (CDR L)))
+              (only-numeric (CDR L))
+          )
+         )
+        )
+)
+
 ;; Helper Function: Given a list and a number, the function returns a new list of all the numbers
 ;; that are greater than the given number
 (DEFINE (greater-than-list L N)
