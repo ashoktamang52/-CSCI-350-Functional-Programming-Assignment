@@ -50,6 +50,21 @@
         )
 )
 
+;; Helper Function: Given a list and a number, the function returns a new list of all the numbers
+;; that are greater than the given number
+(DEFINE (greater-than-list L N)
+        (COND
+         ((NULL? L) '())
+         (ELSE
+          (IF (> (CAR L) N)
+              (LIST (CAR L) (greater-than-list (CDR L) N))
+              (greater-than-list (CDR L) N)
+          )
+         )
+        )
+)
+         
+
 ;; Given two different lists, the function returns the minimum of numbers in L1 that are
 ;; larger than the smallest number in L2.
 (DEFINE (min-above-min L1 L2)
@@ -58,9 +73,14 @@
     ((NULL? L2)
      (IF (NUMBER? (min-from-list L1))
          (min-from-list L1)
-         #f
+         #F
      )
+    )
     (ELSE
-     
+     (IF (NUMBER? (min-from-list L2))
+         L1
+         L1
+     )
+    )
   ) 
 )
